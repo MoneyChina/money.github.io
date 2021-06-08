@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>data-structure | Money's space</title><meta name="author" content="Money"><meta name="copyright" content="Money"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据结构(2020.12更新)   常见算法   常见排序与搜索算法总结   插入排序i从0~len-1中，在前面的序列中给它重新安家（要不断挪其他元素）   冒泡排序  重复遍历要排序的数列，一次比较两个元素，如果顺序错误则交换。每次比较的数量从后往前-1 12345678910111213141516171819202122public class demo_sort &amp;#123;    pu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="data-structure">
+<meta property="og:url" content="https://money.github.io/2020/12/09/data-structure/index.html">
+<meta property="og:site_name" content="Money&#39;s space">
+<meta property="og:description" content="数据结构(2020.12更新)   常见算法   常见排序与搜索算法总结   插入排序i从0~len-1中，在前面的序列中给它重新安家（要不断挪其他元素）   冒泡排序  重复遍历要排序的数列，一次比较两个元素，如果顺序错误则交换。每次比较的数量从后往前-1 12345678910111213141516171819202122public class demo_sort &amp;#123;    pu">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://money.github.io/img/data.jpeg">
+<meta property="article:published_time" content="2020-12-09T07:11:10.000Z">
+<meta property="article:modified_time" content="2021-06-08T09:01:53.204Z">
+<meta property="article:author" content="Money">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://money.github.io/img/data.jpeg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://money.github.io/2020/12/09/data-structure/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'data-structure',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2021-06-08 17:01:53'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Money's space" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/author.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/data.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Money's space</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">data-structure</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-12-09T07:11:10.000Z" title="Created 2020-12-09 15:11:10">2020-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-06-08T09:01:53.204Z" title="Updated 2021-06-08 17:01:53">2021-06-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="data-structure"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="数据结构-2020-12更新"><a href="#数据结构-2020-12更新" class="headerlink" title="数据结构(2020.12更新)"></a><strong>数据结构(2020.12更新)</strong></h2><br>
+
+<ul>
+<li><h3 id="常见算法"><a href="#常见算法" class="headerlink" title="常见算法"></a><strong>常见算法</strong></h3></li>
+</ul>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/holaplace/p/13956028.html"><mark>常见排序与搜索算法总结</mark></a></li>
+</ul>
+<ol>
+<li><h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a><strong>插入排序</strong></h4>i从0~len-1中，在前面的序列中给它重新安家（要不断挪其他元素）</li>
+</ol>
+<ol start="2">
+<li><h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a><strong>冒泡排序</strong></h4></li>
+</ol>
+<p>重复遍历要排序的数列，一次比较两个元素，如果顺序错误则交换。每次比较的数量从后往前-1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class demo_sort &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //冒泡排序算法</span><br><span class="line">        int[] numbers=new int[]&#123;1,5,8,2,3,9,4&#125;;</span><br><span class="line">        //需进行length-1次冒泡</span><br><span class="line">        for(int i=0;i&lt;numbers.length-1;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=0;j&lt;numbers.length-1-i;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(numbers[j]&gt;numbers[j+1])</span><br><span class="line">                &#123;</span><br><span class="line">                    int temp=numbers[j];</span><br><span class="line">                    numbers[j]=numbers[j+1];</span><br><span class="line">                    numbers[j+1]=temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;从小到大排序后的结果是:&quot;);</span><br><span class="line">        for(i=0;i&lt;numbers.length;i++)</span><br><span class="line">            System.out.print(numbers[i]+&quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a><strong>选择排序</strong></h4>从一端到另一端，每次比较n,n-1….1个数据，每次挑个最小的，放入第1,2….n位。保证每次都能选出个最小的，放在开头。从头至尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。每次swap一个就Okay</li>
+</ol>
+<ol start="4">
+<li><h4 id="希尔排序（分组插入排序）"><a href="#希尔排序（分组插入排序）" class="headerlink" title="希尔排序（分组插入排序）"></a><strong>希尔排序（分组插入排序）</strong></h4><p>gap不断递减，在每次的分组里分别做排序。类推</p>
+</li>
+<li><h4 id="归并排序（先分组再合并）"><a href="#归并排序（先分组再合并）" class="headerlink" title="归并排序（先分组再合并）"></a><strong>归并排序（先分组再合并）</strong></h4><p>不断分组，再比较，每在一对数组里选走一个数字，其分组指针向后移一位，继续进行比较。</p>
+</li>
+<li><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a><strong>快速排序</strong></h4><p>拎出一个pivot(选个最左边的)，从hi开始，选第一个所指的，大于pivot则放在hi上，hi左移，读左移后指向的元素进行比较。相反同理，直至low和hi搞一块，则pivot赋值过去。</p>
+</li>
+<li><h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a><strong>堆排序</strong></h4><p>大顶堆：每个节点的值都大于或等于其子节点的值，在堆排序算法中用于<strong>升序</strong>排列；</p>
+</li>
+</ol>
+<p>小顶堆：每个节点的值都小于或等于其子节点的值，在堆排序算法中用于<strong>降序</strong>排列；</p>
+<br>
+
+<ul>
+<li><h3 id="红黑树（AVL平衡二叉树后裔）"><a href="#红黑树（AVL平衡二叉树后裔）" class="headerlink" title="红黑树（AVL平衡二叉树后裔）"></a><strong>红黑树（AVL平衡二叉树后裔）</strong></h3></li>
+</ul>
+<ol>
+<li><em><strong>AVL树</strong></em></li>
+</ol>
+<p>找到插入路径上离插入节点最近的平衡因子的绝对值大于1的结点A，进行位置调整</p>
+<br>
+
+
+<ul>
+<li><h3 id=""><a href="#" class="headerlink" title="."></a><strong><a href=""><mark>.</mark></a></strong></h3></li>
+</ul>
+<br>
+
+<ul>
+<li><h3 id="-1"><a href="#-1" class="headerlink" title=".."></a><strong>..</strong></h3></li>
+</ul>
+ <br>
+
+<ul>
+<li><h3 id="…"><a href="#…" class="headerlink" title="…"></a><strong><mark>…</mark></strong></h3></li>
+</ul>
+<br>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Money</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://money.github.io/2020/12/09/data-structure/">https://money.github.io/2020/12/09/data-structure/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/data.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/09/DB/"><img class="prev-cover" src="/img/DB.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">DB</div></div></a></div><div class="next-post pull-right"><a href="/2020/12/09/Future/"><img class="next-cover" src="/img/northern-lights.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Future</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Twikoo</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/author.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Money</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/MoneyChina" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:563553486@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2020-12%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">数据结构(2020.12更新)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">常见算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">选择排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%88%E5%88%86%E7%BB%84%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">希尔排序（分组插入排序）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%88%E5%85%88%E5%88%86%E7%BB%84%E5%86%8D%E5%90%88%E5%B9%B6%EF%BC%89"><span class="toc-number">1.1.5.</span> <span class="toc-text">归并排序（先分组再合并）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">1.1.6.</span> <span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-number">1.1.7.</span> <span class="toc-text">堆排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%EF%BC%88AVL%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E5%90%8E%E8%A3%94%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">红黑树（AVL平衡二叉树后裔）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-1"><span class="toc-number">1.4.</span> <span class="toc-text">..</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%A6"><span class="toc-number">1.5.</span> <span class="toc-text">…</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/06/07/hello-world/" title="Hello World"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2021/06/07/hello-world/" title="Hello World">Hello World</a><time datetime="2021-06-07T06:03:39.000Z" title="Created 2021-06-07 14:03:39">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/09/DB/" title="DB"><img src="/img/DB.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DB"/></a><div class="content"><a class="title" href="/2020/12/09/DB/" title="DB">DB</a><time datetime="2020-12-09T07:30:39.000Z" title="Created 2020-12-09 15:30:39">2020-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/09/data-structure/" title="data-structure"><img src="/img/data.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="data-structure"/></a><div class="content"><a class="title" href="/2020/12/09/data-structure/" title="data-structure">data-structure</a><time datetime="2020-12-09T07:11:10.000Z" title="Created 2020-12-09 15:11:10">2020-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/09/Future/" title="Future"><img src="/img/northern-lights.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Future"/></a><div class="content"><a class="title" href="/2020/12/09/Future/" title="Future">Future</a><time datetime="2020-12-09T00:54:15.000Z" title="Created 2020-12-09 08:54:15">2020-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/21/%E5%AD%A6%E4%B9%A0Javascript-%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" title="学习Javascript-高阶函数"><img src="/img/learning_js_5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="学习Javascript-高阶函数"/></a><div class="content"><a class="title" href="/2020/03/21/%E5%AD%A6%E4%B9%A0Javascript-%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" title="学习Javascript-高阶函数">学习Javascript-高阶函数</a><time datetime="2020-03-21T02:05:49.000Z" title="Created 2020-03-21 10:05:49">2020-03-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Money</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Owned by Money and using <a target="_blank" rel="noopener" href="https://butterfly.js.org/">Butterfly</a> Theme!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-brown.vercel.app/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-brown.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo@1.4.0-alpha.1/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = new Waline(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'waline-five-plum.vercel.app',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+      visitor: false,
+      dark: '[data-theme="dark"]'
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Twikoo' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
